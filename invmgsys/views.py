@@ -1,6 +1,10 @@
 from django.shortcuts import render
 from invmgsys.models import Product, Part, PartsInProduct
 
+def inventory_system(request):
+    return render(request, 'invmgsys/inventory_system.html', {})
+
+
 
 # Create your views here.
 def list_bom(request, product_id=None):
@@ -14,4 +18,4 @@ def list_bom(request, product_id=None):
         "bom": bom,
     }
     # render a page where context contains bom
-    return render(request, 'mytemplate', context)
+    return render(request, 'list_bom', context)
