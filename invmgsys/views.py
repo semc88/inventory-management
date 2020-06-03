@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from invmgsys.models import Product, Part, PartsInProduct
 
+
 def inventory_system(request):
-    return render(request, 'invmgsys/inventory_system.html', {})
-
-
+    parts = Part.objects.filter().order_by('id')
+    #parts = Part.objects.filter().order_by('id')
+    #print('debugging part id', parts)
+    return render(request, 'invmgsys/inventory_system.html', {'parts': parts})
 
 # Create your views here.
 def list_bom(request, product_id=None):
