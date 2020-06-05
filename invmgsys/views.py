@@ -1,12 +1,29 @@
 from django.shortcuts import render
-from invmgsys.models import Product, Part, PartsInProduct
+from invmgsys.models import *  # '*' means all. Product, Part, PartsInProduct, StorageLocation, WorkOrder
 
 
 def inventory_system(request):
-    parts = Part.objects.filter().order_by('id')
-    #parts = Part.objects.filter().order_by('id')
-    #print('debugging part id', parts)
-    return render(request, 'invmgsys/inventory_system.html', {'parts': parts})
+    # parts = Part.objects.filter().order_by('id')
+    # parts = Part.objects.filter().order_by('id')
+    # print('debugging part id', parts)
+    return render(request, 'invmgsys/inventory_system.html')
+
+
+def display_parts(request):
+    parts = Part.objects.all()
+    context = {
+        'parts': parts,
+        'header': 'Parts',
+    }
+    return render(request, 'invmgsys/inventory_system.html', context)
+
+
+def add_part(request):
+    print('test')
+#     return add_item(request, LaptopForm)
+
+# parts = Part.objects.all()
+# storage_location = StorageLocation.objects.filter
 
 # Create your views here.
 def list_bom(request, product_id=None):

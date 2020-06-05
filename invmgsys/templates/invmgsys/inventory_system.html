@@ -1,8 +1,72 @@
+{% load static %}
+
+<html>
+<head>
+     <title>Inventory Management</title>
+</head>
+
+{% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.min.css' %}"/>
+
+<body>
+
+  <div class="add_buttons">
+
+    <div class="button-group">
+      <a href="{% url 'display_parts' %}" class="btn btn-primary btn-md btn-trim" role="button"> Parts</a>
+      <a href="{% url 'add_part' %}" class="btn btn-warning btn-sm btn-pad" role="button"> +</a>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+        <div>
+            <h1><a>Inventory Management System</a></h1>
+        </div>
+
+        <div>
+           <h2><a href="/">Parts</h2>
+                {% for part in parts%}
+                <div class="part">
+                {{ part }}
+                </div>
+                {% endfor %}
+
+            <h2><a href="/">Products</h2>
+            <h2><a href="/">Inventory</h2>
+            <h2><a href="/">Bill Of Materials</h2>
+            <h2><a href="/">Work Order</h2>
+        </div>
+
+
+<h2><a {% url 'list_bom'%}  <h2><a
+<a href="{% url 'list_bom' %}" class="btn btn-primary btn-md btn-trim" role="button"> BOMs</a>
+
+
+
+
+
+        #--------------------------------
+
+<h1><a href="/">Inventory Management</a></h1>
+<h2><a href="/">Parts</h2>
 <html>
     <head>
         <title>Inventory Management</title>
+        <link rel="stylesheet" href="{% static 'css/invmgsys.css' %}">
+        #Changes font color
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
     </head>
     <body>
+
         <div>
             <h1><a href="/">Inventory Management</a></h1>
         </div>
@@ -19,10 +83,9 @@
     </body>
 </html>
 
+
 {% for part in parts%}
-<div>
+<div class="part">
 {{ part }}
 </div>
 {% endfor %}
-
-
