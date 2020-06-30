@@ -85,12 +85,23 @@ def add_product(request):
         return render(request, 'invmgsys/add_item.html', {'form': form})
 
 def add_workorder(request):
+
+    work_order = get_object_or_404(WorkOrder, pk=pk)
+    product = work_order.product_id
+    parts_used = PartsInProduct.objects.filter(product_id=product)
+    part_storage = StorageLocation.objects.filter(part_id = parts_used)
+
+    #Started but have yet to finish. Not sure if I am going the right direction
+
+
     if request.method == "POST":
         form = WorkOrderForm(request.POST)
 
         if form.is_valid():
             form.save()
             return redirect('display_workorders')
+        return render(request, 'invmgsys/add_item.html', {'form': form})
+
     else:
         form = WorkOrderForm()
         return render(request, 'invmgsys/add_item.html', {'form': form})
