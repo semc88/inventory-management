@@ -1,0 +1,15 @@
+{% extends 'invmgsys/index.html' %}
+
+
+
+{% block body %}
+
+
+
+{{ form.instance }}
+{{ form }}
+
+# extra link for index
+
+    <a href="{% url 'add_bom' product.pk %}" class="btn btn-primary btn-md" role="button"> BOM+</a>
+{% endblock %}

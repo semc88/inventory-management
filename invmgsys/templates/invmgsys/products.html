@@ -1,0 +1,42 @@
+{% extends 'invmgsys/index.html' %}
+
+{% block body %}
+
+<h4> Currently Viewing {{header}} </h4>
+<br>
+
+
+<table class="table table-hover table-bordered">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Bill Of Materials</th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for product in products %}
+    <tr>
+        <td>{{ product.pk }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.desc }}</td>
+        <td>
+            <a href="{% url 'display_bom' product.pk %}" class="btn btn-primary btn-md" role="button"> View BOM</a>
+            <a href="{% url 'add_bom' product.pk %}" class="btn btn-warning btn-sm" role="button"> Create/Edit BOM</a>
+
+        <td>
+            <a href="{% url 'edit_product' product.pk %}" class="btn btn-warning btn-sm" role="button"> Edit Product</a>
+            <a href="{% url 'delete_product' product.pk %}" class="btn btn-danger btn-sm" role="button"> Delete Product</a>
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+    </tbody>
+</table>
+
+{% endblock %}

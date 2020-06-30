@@ -1,0 +1,41 @@
+{% extends 'invmgsys/index.html' %}
+
+{% block body %}
+
+<h4> Currently Viewing {{header}} </h4>
+<br>
+
+
+<table class="table table-hover table-bordered">
+    <thead>
+    <tr>
+        <th>Work Order ID</th>
+        <th>Product ID</th>
+        <th>Start Date</th>
+        <th>Due Date</th>
+        <th>Qty</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for workorder in workorders %}
+    <tr>
+        <td>{{ workorder.pk }}</td>
+        <td>{{ workorder.product_id }}</td>
+        <td>{{ workorder.start_date }}</td>
+        <td>{{ workorder.due_date }}</td>
+        <td>{{ workorder.qty }}</td>
+
+        <td>
+            <a href="{% url 'edit_workorder' workorder.pk %}" class="btn btn-warning btn-sm" role="button"> Edit</a>
+            <a href="{% url 'delete_workorder' workorder.pk %}" class="btn btn-danger btn-sm" role="button"> Delete</a>
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+    </tbody>
+</table>
+
+{% endblock %}

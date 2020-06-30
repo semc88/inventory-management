@@ -1,0 +1,48 @@
+{% extends 'invmgsys/index.html' %}
+
+
+
+{% block body %}
+
+
+<h4> Currently Viewing {{header}} </h4>
+<br>
+
+<table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Desc</th>
+        <th>Creator</th>
+        <th>Location</th>
+      </tr>
+    </thead>
+
+    <tbody>
+        {% for part in parts %}
+        <tr>
+            <td>{{ part.pk }}</td>
+            <td>{{ part.name }}</td>
+            <td>{{ part.desc }}</td>
+            <td>{{ part.creator}}</td>
+            <td>
+                {% for location in part.storagelocation_set.all %}
+                   <div class= "row">{{ location.pk }},</div>
+
+
+                {% endfor %}
+            </td>
+            <td>
+                <a href="{% url 'edit_part' part.pk %}" class="btn btn-warning btn-sm" role="button"> Edit</a>
+                <a href="{% url 'delete_part' part.pk %}" class="btn btn-danger btn-sm" role="button"> Delete</a>
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+</table>
+
+{% endblock %}

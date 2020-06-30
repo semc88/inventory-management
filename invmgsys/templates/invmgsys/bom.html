@@ -1,0 +1,35 @@
+{% extends 'invmgsys/index.html' %}
+
+
+
+{% block body %}
+
+
+
+<h1>Product: {{ product.name }}</h1>
+<table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>Part ID</th>
+        <th>Qty</th>
+      </tr>
+    </thead>
+
+    <tbody>
+<!--[ (product id, part id, qt), (product id, part id, qt)]-->
+    {% for partinproduct in product.partsinproduct_set.all %}
+    <tr>
+        <td>
+            {{partinproduct.part_id}}
+        </td>
+
+        <td>
+            {{partinproduct.qty}}
+        </td>
+    </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+
+{% endblock %}

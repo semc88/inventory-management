@@ -1,0 +1,42 @@
+{% extends 'invmgsys/index.html' %}
+
+
+
+{% block body %}
+
+
+<h4> Currently Viewing {{header}} </h4>
+<br>
+
+<table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>Location ID</th>
+        <th>Description</th>
+        <th>Part_id</th>
+        <th>Qty</th>
+
+      </tr>
+    </thead>
+
+    <tbody>
+        {% for location in locations %}
+        <tr>
+            <td>{{ location.pk }}</td>
+            <td>{{ location.description }}</td>
+            <td>{{ location.part_id }}</td>
+            <td>{{ location.qty}}</td>
+
+            <td>
+                <a href="{% url 'edit_location' location.pk %}" class="btn btn-warning btn-sm" role="button"> Edit</a>
+                <a href="{% url 'delete_location' location.pk %}" class="btn btn-danger btn-sm" role="button"> Delete</a>
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+</table>
+
+{% endblock %}
